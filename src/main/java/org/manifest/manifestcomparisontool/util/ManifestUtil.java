@@ -41,18 +41,6 @@ public class ManifestUtil {
         return differenceManifest;
     }
 
-    private static LinkedHashMap getDifferenceMap(Manifest manifest1, Manifest manifest2) {
-        Map<Object, Set<Object>>  manifest1Map = ManifestUtil.toMap(manifest1);
-        Map<Object, Set<Object>>  manifest2Map = ManifestUtil.toMap(manifest2);
-
-        return manifest1Map.entrySet()
-            .stream().filter(entry -> !entry.getValue().equals(manifest2Map.get(entry.getKey())))
-            .map(entry ->  Map.entry(entry.getKey(), manifest2Map.containsKey(entry.getKey()) ? Sets.difference(entry.getValue(),manifest2Map.get(entry.getKey())) : entry.getValue()))
-            .filter(entry -> CollectionUtils.isNotEmpty(entry.getValue()))
-            .collect(getLinkedHashMapCollector());
-    }
-
-
     public static Map<Object, Set<Object>> toMap(Manifest manifest) {
         return manifest.getMainAttributes().entrySet().stream()
             .filter(entry -> ATTRIBUTE_WHITE_LIST.contains(entry.getKey().toString()))
@@ -92,6 +80,17 @@ public class ManifestUtil {
             entry -> ((Map.Entry) entry).getValue(),
             (k1, k2) -> k1,
             LinkedHashMap::new);
+    }
+
+    private static LinkedHashMap getDifferenceMap(Manifest manifest1, Manifest manifest2) {
+        Map<Object, Set<Object>>  manifest1Map = ManifestUtil.toMap(manifest1);
+        Map<Object, Set<Object>>  manifest2Map = ManifestUtil.toMap(manifest2);
+
+        return manifest1Map.entrySet()
+            .stream().filter(entry -> !entry.getValue().equals(manifest2Map.get(entry.getKey())))
+            .map(entry ->  Map.entry(entry.getKey(), manifest2Map.containsKey(entry.getKey()) ? Sets.difference(entry.getValue(),manifest2Map.get(entry.getKey())) : entry.getValue()))
+            .filter(entry -> CollectionUtils.isNotEmpty(entry.getValue()))
+            .collect(getLinkedHashMapCollector());
     }
 
 
