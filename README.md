@@ -53,11 +53,11 @@ mvn clean install
 <h2>Run</h2>
 
 ```
-java -jar target/manifest-comparison-tool-0.0.1.jar
+java -jar target/manifest-comparison-tool-0.0.2-SNAPSHOT.jar
 ```
 
 Input and output files can be set:
 
 ```
-java -jar target/manifest-comparison-tool-0.0.1.jar --in1=<input1> --in2=<input2> --out1=<output1> --out2=<output2>
+java -jar target/manifest-comparison-tool-0.0.2-SNAPSHOT.jar --in1=<input1> --in2=<input2> --out1=<output1> --out2=<output2>
 ```
