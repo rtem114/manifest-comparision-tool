@@ -1,7 +1,1 @@
-Bundle-Name: MyService 19
-Bundle-SymbolicName: com.sample.myservice1
-Bundle-Version: 1.0.6
-Import-Package: org.apache.commons.logging;version="1.0.4"
-Export-Package: com.sample.myservice.api;version="1.0.1"
-Private-Package: org.antlr.runtime.debug
-Bundle-ClassPath: lib/commons-lang3-3.10.jar
+
