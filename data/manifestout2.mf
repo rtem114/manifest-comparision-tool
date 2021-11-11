@@ -1,0 +1,6 @@
+Bundle-Name: MyService bundle 22
+Bundle-SymbolicName: com.sample.myservice2
+Bundle-Version: 1.0.4
+Import-Package: org.apache.commons.logging;version="1.0.5"
+Export-Package: com.sample.myservice.api;version="1.0.2"
+Bundle-ClassPath: lib/commons-lang3-3.11.jar,lib/trove.jar
